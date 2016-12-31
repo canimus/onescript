@@ -2,10 +2,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import java.net.URL;
 import java.util.List;
-import org.openqa.selenium.Keys;
 
 // java -classpath .:junit-4.12.jar:hamcrest-core-1.3.jar:selenium-server-standalone-3.0.1.jar -Dwebdriver.gecko.driver=/sw/apps/selenium3example/geckodriver RemoteTest
 public class NSHomePage {

@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Factory;
+import org.testng.Assert;
 
 
 import java.net.URL;
@@ -49,6 +50,7 @@ public class NSPlanRideTestWithNG {
       NSHomePO page = new NSHomePO(driver);
       page.planRide(origin, destination);
       Thread.sleep(5000);
+      Assert.assertTrue(driver.getTitle().contains("Reisplanner"), "Unable to plan ride in train");
       driver.navigate().back();
     } catch(Exception e) {
       System.out.println("Error processing PO:" + e.toString());
