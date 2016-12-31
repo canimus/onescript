@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="IOVIO / Execution Report">
+  <listeners>
+    <listener class-name="CustomReporter" />
+  </listeners>
+
+  <test name="ING / Selenium Framework">
+    <classes>
+      <class name="FirefoxTestWithNG" />
+    </classes>
+  </test>
+</suite>
