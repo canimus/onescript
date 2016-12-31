@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.TimeoutException;
 
 import org.testng.Assert;
@@ -37,6 +38,9 @@ public class NSHomePO extends LoadableComponent<NSHomePO> {
     this.driver = driver;
     // Wait a maximum of 2 seconds in this page
     this.wait = new WebDriverWait(this.driver, 2);
+    
+    // This call sets the WebElement fields.
+    PageFactory.initElements(driver, this);
   }
 
   @Override
