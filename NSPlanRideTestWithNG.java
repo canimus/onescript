@@ -32,7 +32,7 @@ public class NSPlanRideTestWithNG {
     try {
       //driver = new RemoteWebDriver(new URL(hubURL), capability);
       driver = new FirefoxDriver();
-      //driver.get("http://www.ns.nl");
+      driver.get("http://www.ns.nl");
       //driver.manage().window().maximize();
     } catch(Exception e) {
       System.out.println("Unable to build a proper URL with: " + e.toString() );
@@ -46,7 +46,7 @@ public class NSPlanRideTestWithNG {
   )
   public void getRides(String origin, String destination) {
     try {
-      NSHomePO page = new NSHomePO(driver).get();
+      NSHomePO page = new NSHomePO(driver);
       page.planRide(origin, destination);
       Thread.sleep(5000);
       driver.navigate().back();
