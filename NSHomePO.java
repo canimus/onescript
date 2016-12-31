@@ -8,12 +8,13 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.TimeoutException;
 
-
+import org.testng.Assert;
 import java.util.List;
 
-public class NSHomePO {
+public class NSHomePO extends LoadableComponent<NSHomePO> {
   WebDriver driver;
   WebDriverWait wait;
 
@@ -36,6 +37,16 @@ public class NSHomePO {
     this.driver = driver;
     // Wait a maximum of 2 seconds in this page
     this.wait = new WebDriverWait(this.driver, 2);
+  }
+
+  @Override
+  protected void load() {
+    this.driver.get("http://www.ns.nl");
+  }
+
+  @Override
+  protected void isLoaded() throws Error {
+    Assert.assertTrue(driver.getTitle().contains("Welkom"), "Failed to load ns.nl home page");
   }
 
   public NSHomePO acceptCookies() {
