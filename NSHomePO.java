@@ -42,7 +42,6 @@ public class NSHomePO {
   }
 
   public NSHomePO acceptCookies() {
-    //driver.switchTo().frame(0);
     try {
       this.wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(0));
       // Handling the cookie modal dialog window
@@ -50,13 +49,11 @@ public class NSHomePO {
       if ( !links.isEmpty() ) {
         links.iterator().next().click();
       }
-    } catch(TimeoutException e) {
-      System.out.println("No cookie acceptance frame: \n" + e.toString());
+    } catch(TimeoutException e) { // No action if modal not present
     } finally {
-      // Return to main window
+      // Return to main window and continue
       driver.switchTo().defaultContent();
     }
-
     return this;
   }
 
@@ -74,13 +71,13 @@ public class NSHomePO {
     return this;
   }
 
-  public NSHomePO getRideOptions() {
+  public NSRidePlanPO getRideOptions() {
     planButton.click();
-    return this;
+    return new NSRidePlanPO(driver);
   }
 
-  public void planRide(String start, String end) throws Exception {
-    this.acceptCookies()
+  public NSRidePlanPO planRide(String start, String end) throws Exception {
+    return this.acceptCookies()
       .enterDeparture(start)
       .enterArrival(end)
       .getRideOptions();
